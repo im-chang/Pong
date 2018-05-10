@@ -1,3 +1,4 @@
+import Ball from './Ball';
 import Board from './Board';
 import Paddle from './Paddle';
 import { SVG_NS, KEYS } from '../settings';
@@ -15,7 +16,8 @@ export default class Game {
 		this.gameElement = document.getElementById(this.element);
 
 		this.board = new Board(this.width, this.height);
-		// Other code goes here...
+
+		this.ball = new  Ball(8, this.width, this.height);
 
 		this.player1 = new Paddle(
 			this.height,
@@ -55,6 +57,7 @@ export default class Game {
 		this.board.render(svg);
 		this.player1.render(svg);
 		this.player2.render(svg);
+		this.ball. render(svg);
 	}
 
 }
