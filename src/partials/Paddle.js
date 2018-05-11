@@ -29,6 +29,15 @@ export default class Paddle {
       down() {
         this.y = Math.min( this.boardHeight - this.height, this.y + this.speed);
       }
+
+      coordinates(x, y, width, height) {
+        let leftX = x;
+        let rightX = x + width;
+        let topY = y;
+        let bottomY = y + height;
+        return [leftX, rightX, topY, bottomY];
+      }
+
     //...
     render(svg) {
         //...
@@ -39,7 +48,6 @@ export default class Paddle {
       rect.setAttributeNS(null, 'x', this.x); // x of top left corner
       rect.setAttributeNS(null, 'y', this.y); // y of top left corner
       
-  
       svg.appendChild(rect);
 
         
