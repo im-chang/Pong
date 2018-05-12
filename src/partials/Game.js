@@ -24,7 +24,8 @@ export default class Game {
 
 		this.board = new Board(this.width, this.height);
 
-		this.ball = new  Ball(8, this.width, this.height);
+		this.ball1 = new  Ball(8, this.width, this.height);
+		this.ball2 = new  Ball(8, this.width, this.height);
 
 		this.player1 = new Paddle(
 			this.height,
@@ -34,6 +35,7 @@ export default class Game {
 			((this.height - this.paddleHeight) / 2),
 			KEYS.a,
 			KEYS.z,
+			'player1'
 		  );
 
 		  this.player2 = new Paddle(
@@ -44,6 +46,7 @@ export default class Game {
 			((this.height - this.paddleHeight) / 2),
 			KEYS.up,
 			KEYS.down,
+			'player2'
 		  );
 
 		  this.score1 = new Score(this.width / 2 - 50, 30, 30);
@@ -69,7 +72,8 @@ export default class Game {
 		this.board.render(svg);
 		this.player1.render(svg);
 		this.player2.render(svg);
-		this.ball.render(svg, this.player1, this.player2);
+		this.ball1.render(svg, this.player1, this.player2);
+		this.ball2.render(svg, this.player1, this.player2);
 		this.score1.render(svg, this.player1.score);
 		this.score2.render(svg, this.player2.score);
 		
