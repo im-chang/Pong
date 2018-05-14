@@ -23,6 +23,7 @@ Pong is a remake of the classic Atari Pong game in a more modern format. Instead
 * s: down
 * a: left
 * d: right
+
 **Player 2:**
 * ▲ : up
 * ▼: down
