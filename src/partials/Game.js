@@ -14,11 +14,22 @@ export default class Game {
   		this.paddleHeight = 56;
 		this.boardGap = 10;
 
-		 document.addEventListener("keydown", event => {
+		document.addEventListener("keydown", event => {
 			if (event.key == KEYS.spaceBar) {
 				this.pause = !this.pause;
 			}
 		});
+
+		document.addEventListener("keydown", event => {
+			if (event.key == KEYS.shift) {
+				this.player1.score = 0;
+				this.player2.score = 0;
+				this.pause = !this.pause;
+				this.reset();
+				
+			}
+		});
+
 
 		this.gameElement = document.getElementById(this.element);
 
@@ -33,8 +44,10 @@ export default class Game {
 			this.paddleHeight,
 			this.boardGap,
 			((this.height - this.paddleHeight) / 2),
+			KEYS.w,
+			KEYS.s,
 			KEYS.a,
-			KEYS.z,
+			KEYS.d,
 			'player1'
 		  );
 
@@ -46,6 +59,8 @@ export default class Game {
 			((this.height - this.paddleHeight) / 2),
 			KEYS.up,
 			KEYS.down,
+			KEYS.left,
+			KEYS.right,
 			'player2'
 		  );
 
@@ -58,7 +73,6 @@ export default class Game {
 		if (this.pause) {
 			return;
 		}
-
 
 		this.gameElement.innerHTML = '';
 
@@ -76,7 +90,9 @@ export default class Game {
 		this.ball2.render(svg, this.player1, this.player2);
 		this.score1.render(svg, this.player1.score);
 		this.score2.render(svg, this.player2.score);
-		
+
+		if(this.player1.score === 10 || this.player2.score === 10) {
+			this.pause = true; 
 	}
-		
+}
 }
